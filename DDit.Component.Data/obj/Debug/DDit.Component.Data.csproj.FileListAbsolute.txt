@@ -1,0 +1,12 @@
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.dll.config
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.pdb
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\Autofac.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\EntityFramework.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\Autofac.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\EntityFramework.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\obj\Debug\DDit.Component.Data.csprojResolveAssemblyReference.cache
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\obj\Debug\DDit.Component.Data.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\obj\Debug\DDit.Component.Data.pdb
