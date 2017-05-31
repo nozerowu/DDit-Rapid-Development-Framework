@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDit.Component.Tools", "DDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDitApplicationFrame", "DDitApplicationFrame\DDitApplicationFrame.csproj", "{B78A4176-58EA-462B-8DA2-447F54735034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoZero.Core", "NoZero.Core\NoZero.Core.csproj", "{61614261-8C62-4EE3-8A7B-4529ACB5B002}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoZero.Mvc", "NoZero.Mvc\NoZero.Mvc.csproj", "{CE808EE3-F13E-4332-98AF-E120B8F1101E}"
 EndProject
 Global
@@ -47,10 +45,6 @@ Global
 		{B78A4176-58EA-462B-8DA2-447F54735034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B78A4176-58EA-462B-8DA2-447F54735034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B78A4176-58EA-462B-8DA2-447F54735034}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61614261-8C62-4EE3-8A7B-4529ACB5B002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61614261-8C62-4EE3-8A7B-4529ACB5B002}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61614261-8C62-4EE3-8A7B-4529ACB5B002}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61614261-8C62-4EE3-8A7B-4529ACB5B002}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE808EE3-F13E-4332-98AF-E120B8F1101E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE808EE3-F13E-4332-98AF-E120B8F1101E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE808EE3-F13E-4332-98AF-E120B8F1101E}.Release|Any CPU.ActiveCfg = Release|Any CPU
