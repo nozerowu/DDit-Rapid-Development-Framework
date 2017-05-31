@@ -16,8 +16,10 @@ namespace NoZero.Mvc
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "NoZero.Mvc.Areas.SystemSchema.*" }
+            ).DataTokens.Add("area", "SystemSchema");
+
         }
     }
 }

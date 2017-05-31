@@ -18,7 +18,7 @@ namespace NoZero.Mvc.Controllers
         }
         public ActionResult Index()
         {
-            AddModel();
+            //AddModel();
             return View();
         }
 
