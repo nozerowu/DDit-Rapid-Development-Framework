@@ -4,6 +4,7 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\NoZero.Mvc.
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Antlr3.Runtime.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Autofac.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Autofac.Integration.Mvc.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\log4net.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Microsoft.Web.Infrastructure.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Newtonsoft.Json.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\SqlSugar.dll
@@ -18,6 +19,7 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\System.Web.
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\WebGrease.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Autofac.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\Autofac.Integration.Mvc.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\log4net.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\SqlSugar.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\System.Web.Helpers.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\System.Web.Mvc.xml
@@ -37,5 +39,4 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\zh-Hans\Sys
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.pdb
-D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\log4net.dll
-D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\log4net.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.csprojResolveAssemblyReference.cache

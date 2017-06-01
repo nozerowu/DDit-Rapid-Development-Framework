@@ -8,8 +8,9 @@ namespace NoZero.Mvc
         // 有关绑定的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = false;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                       "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -18,28 +19,29 @@ namespace NoZero.Mvc
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                "~/Scripts/datatables/js/jquery.js",
-                "~/Scripts/js/jquery-ui-1.8.24.js",
-                "~/Scripts/js/json2.js",
-                "~/Scripts/bootstrap/js/bootstrap.js",
-                "~/Scripts/datatables/js/jquery.dataTables.js",
-                "~/Scripts/datatables/js/dataTables.bootstrap.js",
-                "~/Scripts/js/jquery.validate.js",
-                "~/Scripts/js/jquery.form.js",
-                "~/Scripts/alertjs/src/alertify.js",
-                "~/Scripts/js/jquery.contextmenu.r2.js",
-                "~/Scripts/iconpicker/js/iconPicker.js",
-                "~/Scripts/select2/js/select2.js",
-                "~/Scripts/charts/js/echarts.js",
-                "~/Scripts/charts/theme/macarons.js",
-                "~/Scripts/fancyTree/jquery.fancytree-all.js",
-                "~/Scripts/fileUpload/fileinput.js",
-                "~/Scripts/fileUpload/fileinput_locale_zh.js",
-                //  "~/Scripts/layer/layer.js",
-                "~/Scripts/js/jquery.sortable.js",
-                "~/Scripts/js/myJavaScript.js"
-            ));
+            //bundles.Add(new ScriptBundle("~/bundles/js").Include(
+            //    "~/Scripts/datatables/js/jquery.js",
+            //    "~/Scripts/js/jquery-ui-1.8.24.js",
+            //    "~/Scripts/js/json2.js",
+            //    "~/Scripts/bootstrap/js/bootstrap.js",
+            //    "~/Scripts/datatables/js/jquery.dataTables.js",
+            //    "~/Scripts/datatables/js/dataTables.bootstrap.js",
+            //    "~/Scripts/js/jquery.validate.js",
+            //    "~/Scripts/js/jquery.form.js",
+            //    "~/Scripts/alertjs/src/alertify.js",
+            //    "~/Scripts/js/jquery.contextmenu.r2.js",
+            //    "~/Scripts/iconpicker/js/iconPicker.js",
+            //    "~/Scripts/select2/js/select2.js",
+            //    "~/Scripts/charts/js/echarts.js",
+            //    "~/Scripts/charts/theme/macarons.js",
+            //    "~/Scripts/fancyTree/jquery.fancytree-all.js",
+            //    "~/Scripts/fileUpload/fileinput.js",
+            //    "~/Scripts/fileUpload/fileinput_locale_zh.js",
+            //    "~/Scripts/js/jquery.sortable.js",
+            //    "~/Scripts/js/myJavaScript.js"
+            //));
+
+            
 
             // 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好
             // 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。

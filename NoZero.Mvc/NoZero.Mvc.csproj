@@ -133,6 +133,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\AccountController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\UserController.cs" />
     <Compile Include="Areas\SystemSchema\SystemSchemaAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -363,6 +365,7 @@
     <Content Include="Scripts\fancyTree\skin-lion\ui.fancytree.less" />
     <Content Include="Scripts\fancyTree\skin-win7\ui.fancytree.less" />
     <Content Include="Areas\SystemSchema\Views\web.config" />
+    <Content Include="Areas\SystemSchema\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.min.css" />
@@ -527,6 +530,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\SystemSchema\Views\Account\" />
     <Folder Include="Areas\SystemSchema\Views\Shared\" />
+    <Folder Include="Areas\SystemSchema\Views\User\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
