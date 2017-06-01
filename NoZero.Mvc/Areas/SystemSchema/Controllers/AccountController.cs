@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using NoZero.Mvc.Controllers;
 using NoZero.Mvc.Models;
-using NoZero.Mvc.Service;
 
 namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 {
@@ -14,7 +13,6 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
     {
         public AccountController(DbService s) : base(s) { }
         // GET: SystemSchema/Account
-        public ILoginService logService { get; set; }
 
         public ActionResult Login()
         {
@@ -27,13 +25,9 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult Login(User model)
         {
-
-            //var IP = base.GetClientIp();
-
-          //  Tuple<bool, string> result = logService.Login(model, IP);
-
-           // return Json(new ResultEntity { result = result.Item1, message = result.Item2 });
-            return Json(new object {});
+            var IP = base.GetClientIp();
+            Tuple<bool, string> result = LoginIn(model, IP);
+            return Json(new ResultEntity { result = result.Item1, message = result.Item2 });
         }
 
         public ActionResult Logout()
@@ -42,7 +36,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
             var logurl = FormsAuthentication.LoginUrl;
             if (User.Identity.IsAuthenticated)
             {
-                logService.Logon();
+                Logon();
                // CacheHelp.RemoveKeyCache(User.Identity.Name);
             }
             return Redirect(logurl);

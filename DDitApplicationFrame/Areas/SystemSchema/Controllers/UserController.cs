@@ -57,7 +57,7 @@ namespace DDitApplicationFrame.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult GetUserList(User usermodel = null)
         {
-            var ListModel = this.UserRepository.GetList(usermodel);
+            var ListModel = UserRepository.GetList(usermodel);
             return this.JsonResult(ListModel);
         }
 

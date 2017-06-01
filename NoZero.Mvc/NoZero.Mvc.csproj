@@ -149,6 +149,7 @@
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Menu_Button.cs" />
+    <Compile Include="Models\ResultEntity.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Role_Button.cs" />
     <Compile Include="Models\Role_Menu.cs" />
@@ -157,11 +158,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\ILoginService.cs" />
-    <Compile Include="Service\Imp\LoginService.cs" />
-    <Compile Include="Service\Imp\UserService.cs" />
-    <Compile Include="Service\IUserService.cs" />
-    <Compile Include="Service\LoginContract.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AssistStyle.css" />
@@ -365,6 +361,11 @@
     <Content Include="Scripts\fancyTree\skin-lion\ui.fancytree.less" />
     <Content Include="Scripts\fancyTree\skin-win7\ui.fancytree.less" />
     <Content Include="Areas\SystemSchema\Views\web.config" />
+    <Content Include="Areas\SystemSchema\Views\Home\Add.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Home\Main.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Home\MenuItem.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Account\Login.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\User\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.css" />
@@ -525,12 +526,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\LogLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\SystemSchema\Views\Account\" />
     <Folder Include="Areas\SystemSchema\Views\Shared\" />
-    <Folder Include="Areas\SystemSchema\Views\User\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
