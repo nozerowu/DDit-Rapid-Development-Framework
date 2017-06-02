@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+
+@using NoZero.Mvc.Models
+@model IEnumerable<Button>
+
+<li class="list-group-item">
+
+    @foreach (var item in Model)
+    {
+        var data = item.Button_Operation == "" || item.Button_Operation == null ? "" : "data-toggle=modal  data-target=#" + ViewBag.mark+item.Button_Operation + "";
+        <button type="button" class="btn btn-default" id="@(ViewBag.mark + item.Button_OpID)" @data >
+            <span class="@item.Button_Magic" aria-hidden="true"></span> @item.Button_Name
+        </button>
+    }
+</li>

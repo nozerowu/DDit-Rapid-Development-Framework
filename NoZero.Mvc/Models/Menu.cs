@@ -63,7 +63,7 @@ namespace NoZero.Mvc.Models
         /// Default:- 
         /// Nullable:True 
         /// </summary>
-        public DateTime? Create_Time {get;set;}
+        public DateTime Create_Time {get;set;}
 
         /// <summary>
         /// Desc:- 

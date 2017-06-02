@@ -134,7 +134,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\AccountController.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\DictionaryController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\ErrorController.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\LogController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\MenuController.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\UserController.cs" />
     <Compile Include="Areas\SystemSchema\SystemSchemaAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -147,8 +151,11 @@
     <Compile Include="Models\DbService.cs" />
     <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Models\DictionaryCategory.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\LoginLog.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuDo.cs" />
+    <Compile Include="Models\MenuMappingButton.cs" />
     <Compile Include="Models\Menu_Button.cs" />
     <Compile Include="Models\ResultEntity.cs" />
     <Compile Include="Models\Role.cs" />
@@ -369,6 +376,11 @@
     <Content Include="Areas\SystemSchema\Views\Account\Login.cshtml" />
     <Content Include="Areas\SystemSchema\Views\User\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Home\Index.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Button\CreateButtonByMuen.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Button\Index.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Dictionary\Index.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Error\NotFound.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Log\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.min.css" />
@@ -532,7 +544,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\SystemSchema\Views\Button\" />
+    <Folder Include="Areas\SystemSchema\Views\Menu\" />
     <Folder Include="Areas\SystemSchema\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

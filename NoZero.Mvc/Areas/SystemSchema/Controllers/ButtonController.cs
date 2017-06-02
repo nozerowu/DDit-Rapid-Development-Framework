@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using NoZero.Mvc.Controllers;
 using NoZero.Mvc.Models;
-using System.Web.Mvc;
+using SqlSugar;
+
 
 namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 {
@@ -13,104 +14,103 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
     {
         public ButtonController(DbService s) : base(s) { }
         // GET: SystemSchema/Button
-    
-        //public ActionResult Index()
-        //{
 
-        //    return View();
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult GetButtonList(Button model) {
-        //    var result = this.ButtonRepository.GetButtonList(model);
- 
-        //    return this.JsonResult(result);
-        //}
+        [HttpPost]
+        public ActionResult GetButtonList(Button model)
+        {
+            var result = db.Queryable<Button>().ToList();
+            return this.JsonResult(result);
+        }
 
-        //[HttpPost]
-        //public ActionResult GetButtonItem() {
+        private ActionResult JsonResult(List<Button> result)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    var btnModel = this.ButtonRepository.GetButtonList();
+        [HttpPost]
+        public ActionResult GetButtonItem()
+        {
+            var btnModel = db.Queryable<Button>().ToList();
+            return Content(SerializeObject(btnModel));
+        }
 
-        //    return Content(SerializeObject(btnModel));
-        //}
+        [HttpPost]
+        public ActionResult CurrentRoleBtnAuthority(int RoleID)
+        {
+            var result = db.Queryable<Role_Button>().Where(it => it.Role_ID == RoleID).ToList();
+            return Json(result);
+        }
 
-        //[HttpPost]
-        //public ActionResult CurrentRoleBtnAuthority(int RoleID)
-        //{
+        [HttpPost]
+        public ActionResult AddorEditButtonInfo(Button model)
+        {
+            if (model.Button_ID == 0)
+            {
+                model.Create_Time = DateTime.Now;
+                db.Insert(model);
+            }
+            else
+            {
+                model.Update_Time = DateTime.Now;
+                db.Update(model);
+            }
+            return Json(new ResultEntity { result = true });
+        }
 
-        //    var result = this.RBRepository.GetbtnAuthByRole(RoleID);
+        [HttpPost]
+        public ActionResult MenuMappingButton(int MenuID, List<Menu_Button> mplist)
+        {
+            db.Delete<Menu_Button>(it => it.Menu_ID == MenuID);
+            db.SqlBulkCopy(mplist);
+            return Json(new ResultEntity { result = true });
+        }
 
-        //    return Json(result);
-        //}
+        public ActionResult RemoveButton(int btnID)
+        {
+            if (!db.Queryable<Menu_Button>().Any(it=>it.Button_ID==btnID))
+            {
+                db.Delete<Button, int>(btnID);
+                return Json(new ResultEntity { result = true });
+            }
+            return Json(new ResultEntity { result = false, message = "该按钮已经绑定菜单，无法删除！" });
+        }
 
-        //[HttpPost]
-        //public ActionResult AddorEditButtonInfo(Button model) {
-        //    if (model.ButtonID == 0)
-        //    {
-        //        model.CreateTime = DateTime.Now;
-        //        this.ButtonRepository.AddBtn(model);
-        //    }
-        //    else {
-        //        model.UpdateTime = DateTime.Now;
-        //        this.ButtonRepository.ModifyBtn(model);
-        //    }
-        //    return Json(new ResultEntity {result=true });
-        //}
+        [ChildActionOnly]
+        public ActionResult CreateButtonByMenu(int menuId, string mark)
+        {
+            var rolelist = db.Queryable<User_Role>().Where(it => it.User_ID == UserInfo.User_ID).Select(it=>it.Role_ID).ToList();
+            var buttonList = new List<Button>();
+            var mb = db.Queryable<Menu_Button>().Where(it => it.Menu_ID == menuId).OrderBy(it => it.OrderBy).ToList();
+            foreach (var role in rolelist)
+            {
+                mb.ForEach(m =>
+                {
+                    var hasmb = db.Queryable<Role_Button>().In(it => it.Role_ID, rolelist).Where(it=>it.Menu_ID==m.Menu_ID).Where(it=>it.Button_ID==m.Button_ID).ToList();
+                    if (hasmb != null)
+                    {
+                        var bt = db.Queryable<Button>().Single(it=>it.Button_ID==m.Button_ID);
+                        if (!buttonList.Contains(bt))
+                        {
+                            buttonList.Add(bt);
+                        }
+                    }
+                });
+            }
 
-        //[HttpPost]
-        //public ActionResult MenuMappingButton(int MenuID,List<MenuMappingButton> mplist) {
-        //    this.MPRepository.MenuMapBtn(MenuID, mplist);
+            ViewBag.mark = mark;
+            buttonList = new List<Button>();
+            mb.ForEach(m =>
+            {
+                var btn = buttonList.FirstOrDefault(a => a.Button_ID == m.Button_ID);
+                if (btn != null) buttonList.Add(btn);
+            });
 
-        //    return Json(new ResultEntity { result = true });
-        //}
-
-        //public ActionResult RemoveButton(int btnID) {
-
-        //    var list = this.MPRepository.GetMBList(new MenuMappingButton { ButtonID = btnID });
-        //    if (list.Count ==0)
-        //    {
-        //        this.ButtonRepository.DeleteBtn(btnID);
-        //        return Json(new ResultEntity { result = true });
-        //    }
-
-        //    return Json(new ResultEntity { result=false,message="该按钮已经绑定菜单，无法删除！"});
-        //}
-
-        //[ChildActionOnly]
-        //public ActionResult CreateButtonByMuen(int menuId, string mark)
-        //{
-        //    var rolelist = UserRepository.GetbyID(UserInfo.UserID).RoleList;
-
-        //    var buttonList = new List<Button>();
-
-        //    var mb = this.MenuRepository.GetSingleMenu(menuId).mbList.OrderBy(a=>a.OrderBy).ToList();
-
-        //    foreach (var role in rolelist)
-        //    {
-        //        mb.ForEach(m =>
-        //        {
-        //            var hasmb = role.rbList.Where(a => a.MenuID == m.MenuID && a.ButtonID == m.ButtonID).FirstOrDefault();
-        //            if (hasmb != null)
-        //            {
-        //                buttonList.Add(this.ButtonRepository.GetSingleBtnbyID(m.ButtonID));
-        //            }
-        //        });
-        //    }
-
-        //    ViewBag.mark = mark;
-            
-        //    var newButton = buttonList.DistinctBy(a => a.ButtonID);
-
-        //    buttonList = new List<Button>();
-        //    mb.ForEach(m =>
-        //    {
-        //        var btn = newButton.Where(a => a.ButtonID == m.ButtonID).FirstOrDefault();
-        //        if (btn != null) buttonList.Add(btn);
-                  
-        //    });
-
-        //    return PartialView(buttonList);
-        //}
+            return PartialView(buttonList);
+        }
     }
 }

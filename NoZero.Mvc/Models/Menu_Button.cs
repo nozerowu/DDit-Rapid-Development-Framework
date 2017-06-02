@@ -21,21 +21,21 @@ namespace NoZero.Mvc.Models
         /// Default:- 
         /// Nullable:True 
         /// </summary>
-        public int? Menu_ID {get;set;}
+        public int Menu_ID {get;set;}
 
         /// <summary>
         /// Desc:- 
         /// Default:- 
         /// Nullable:True 
         /// </summary>
-        public int? Button_ID {get;set;}
+        public int Button_ID {get;set;}
 
         /// <summary>
         /// Desc:- 
         /// Default:- 
         /// Nullable:True 
         /// </summary>
-        public int? OrderBy {get;set;}
+        public int OrderBy {get;set;}
 
     }
 }

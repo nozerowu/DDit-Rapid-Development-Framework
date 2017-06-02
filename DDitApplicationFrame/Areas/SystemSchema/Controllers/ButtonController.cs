@@ -79,7 +79,7 @@ namespace DDitApplicationFrame.Areas.SystemSchema.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult CreateButtonByMuen(int menuId, string mark)
+        public ActionResult CreateButtonByMenu(int menuId, string mark)
         {
             var rolelist = UserRepository.GetbyID(UserInfo.UserID).RoleList;
 
