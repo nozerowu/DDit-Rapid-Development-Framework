@@ -19,7 +19,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [ChildActionOnly]
         public ActionResult MenuItem()
         {
-            var newMenu = GetMenuByUserID(UserInfo.User_ID);
+            var newMenu = GetMenuByUserId(UserInfo.User_ID);
             return PartialView(newMenu);
         }
 

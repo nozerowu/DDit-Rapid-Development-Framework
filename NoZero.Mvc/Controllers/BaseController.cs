@@ -21,7 +21,7 @@ namespace NoZero.Mvc.Controllers
             db = s._db;   
         }
 
-        public List<Menu> GetMenuByUserID(int userId)
+        public List<Menu> GetMenuByUserId(int userId)
         {
             var tempUser = db.Queryable<User>("Base.User").FirstOrDefault(it => it.User_ID == userId);
             var rolelist = db.Queryable<User_Role>("Base.User_Role").Where(it => it.Role_ID == tempUser.User_ID).Select(it => it.Role_ID).ToList();

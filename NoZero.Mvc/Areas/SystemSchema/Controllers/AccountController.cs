@@ -16,6 +16,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult Login()
         {
+            //db.ClassGenerating.GetTableNameWithSchema(db, "User");
             string returnUrl = Request.Params["returnUrl"];
             returnUrl = returnUrl ?? Url.Action("Index", "Home");
             ViewBag.TaskUrl = returnUrl;

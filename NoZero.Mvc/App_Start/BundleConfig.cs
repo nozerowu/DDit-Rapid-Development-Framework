@@ -19,27 +19,27 @@ namespace NoZero.Mvc
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/js").Include(
-            //    "~/Scripts/datatables/js/jquery.js",
-            //    "~/Scripts/js/jquery-ui-1.8.24.js",
-            //    "~/Scripts/js/json2.js",
-            //    "~/Scripts/bootstrap/js/bootstrap.js",
-            //    "~/Scripts/datatables/js/jquery.dataTables.js",
-            //    "~/Scripts/datatables/js/dataTables.bootstrap.js",
-            //    "~/Scripts/js/jquery.validate.js",
-            //    "~/Scripts/js/jquery.form.js",
-            //    "~/Scripts/alertjs/src/alertify.js",
-            //    "~/Scripts/js/jquery.contextmenu.r2.js",
-            //    "~/Scripts/iconpicker/js/iconPicker.js",
-            //    "~/Scripts/select2/js/select2.js",
-            //    "~/Scripts/charts/js/echarts.js",
-            //    "~/Scripts/charts/theme/macarons.js",
-            //    "~/Scripts/fancyTree/jquery.fancytree-all.js",
-            //    "~/Scripts/fileUpload/fileinput.js",
-            //    "~/Scripts/fileUpload/fileinput_locale_zh.js",
-            //    "~/Scripts/js/jquery.sortable.js",
-            //    "~/Scripts/js/myJavaScript.js"
-            //));
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                "~/Scripts/datatables/js/jquery.js",
+                "~/Scripts/js/jquery-ui-1.8.24.js",
+                "~/Scripts/js/json2.js",
+                "~/Scripts/bootstrap/js/bootstrap.js",
+                "~/Scripts/datatables/js/jquery.dataTables.js",
+                "~/Scripts/datatables/js/dataTables.bootstrap.js",
+                "~/Scripts/js/jquery.validate.js",
+                "~/Scripts/js/jquery.form.js",
+                "~/Scripts/alertjs/src/alertify.js",
+                "~/Scripts/js/jquery.contextmenu.r2.js",
+                "~/Scripts/iconpicker/js/iconPicker.js",
+                "~/Scripts/select2/js/select2.js",
+                "~/Scripts/charts/js/echarts.js",
+                "~/Scripts/charts/theme/macarons.js",
+                "~/Scripts/fancyTree/jquery.fancytree-all.js",
+                "~/Scripts/fileUpload/fileinput.js",
+                "~/Scripts/fileUpload/fileinput_locale_zh.js",
+                "~/Scripts/js/jquery.sortable.js",
+                "~/Scripts/js/myJavaScript.js"
+            ));
 
             
 

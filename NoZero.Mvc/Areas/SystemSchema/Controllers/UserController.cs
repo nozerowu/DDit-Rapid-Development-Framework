@@ -16,20 +16,18 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult Index()
         {
-            //var roleList = RoleRepository.GetRoleItem();
-            //var bumen = this.DicCategory.DiCategoryList().Where(a => a.Category == "部门").FirstOrDefault();
-            //var bumenlist = bumen.DicValueList.Where(a => a.Enabled == true).ToList();
-            //ViewBag.bumen = bumenlist;
-            //ViewBag.jsonbumen = SerializeObject(bumenlist);
-
-            //ViewBag.role = roleList;
+            var roleList = db.Queryable<Role>().ToList();
+            var bumen = db.Queryable<DictionaryCategory>().Where(it => it.Category == "部门").FirstOrDefault();
+            var bumenlist = db.Queryable<Dictionary>().Where(it => it.DicCategoryID == bumen.ID).ToList();
+            ViewBag.bumen = bumenlist;
+            ViewBag.jsonbumen = SerializeObject(bumenlist);
+            ViewBag.role = roleList;
             return View();
         }
 
         public ActionResult ValidUserName(User model)
         {
-            var userModel = db.Queryable<User>("Base.User").FirstOrDefault(it => it.User_Name == model.User_Name);
-            
+            var userModel = db.Queryable<User>("Base.User").FirstOrDefault(it => it.User_Name == model.User_Name);          
             if (userModel != null)
             {
                 return Content(model.User_ID> 0 && model.User_ID== userModel.User_ID ? "true" : "false");
@@ -59,7 +57,6 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
             var userList=db.Queryable<User>("Base.User").Skip(pageIndex).Take(pageSize).ToList();
             var listModel = new Tuple<int, List<User>>(userList.Count, userList);
             return this.JsonResult(listModel);
-
         }
 
         private ActionResult JsonResult(object p)
@@ -94,7 +91,6 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                 //注意检测是否有问题 2017-06-01
                 db.Update(userModel);
             }
-
             return Json(new ResultEntity { result = true });
         }
 
@@ -108,10 +104,14 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult DistributionRole(int UserId, List<int> RoleIDlist)
         {
-
-            //this.UserRepository.SetUserInfoRole(UserId, RoleIDlist);
-            // to-do 2017-06-01
             // 添加用户角色信息,先删除原有数据,在添加到数据库
+            db.Delete<User_Role>(it => it.User_ID == UserId);
+            List<User_Role> ur = new List<User_Role> {};
+            ur.AddRange(RoleIDlist.Select(item => new User_Role
+            {
+                User_ID = UserId, Role_ID = item
+            }));
+            db.SqlBulkCopy(ur);
             return Json(new ResultEntity { result = true });
         }
 

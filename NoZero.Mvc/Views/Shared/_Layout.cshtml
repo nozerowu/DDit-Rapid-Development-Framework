@@ -55,7 +55,7 @@
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 xl">
                 <div class="treebox" style="border-top:1px solid #ccc; border-bottom:1px solid #ccc; ">
                     <div class="tree" id="tree">
-                        <div class="aaa"><img src="@( Model.HeadPortrait!=null?"/User/GetPortrait?imgName="+Model.HeadPortrait:"../Images/icon/person.png")"><span>@Model.User_Reallyname</span></div>
+                        <div class="aaa"><img src="@( Model.HeadPortrait!=null?"/User/GetPortrait?imgName="+Model.HeadPortrait:"/Images/icon/person.png")"><span>@Model.User_Reallyname</span></div>
                         @Html.Action("MenuItem", "Home", null)
                     </div>
                 </div>

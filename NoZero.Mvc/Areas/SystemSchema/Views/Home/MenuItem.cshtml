@@ -3,32 +3,32 @@
 @model IEnumerable<Menu>
 
 @{
-    var menuitem=Model.Where(a=>a.MenuParentID==null).OrderBy(a=>a.MenuOrder);
+    var menuitem=Model.Where(a=>a.Menu_ParentID==null).OrderBy(a=>a.Menu_Order);
     if (menuitem!=null&&menuitem.Count()>0)
     { 
         foreach (var item in menuitem)
         {
              <ul>
                 <li>
-                    <span class="xlj"><i class="@item.MenuIcon" style="width:16px;height:16px"></i> @item.MenuName</span>
+                    <span class="xlj"><i class="@item.Menu_Icon" style="width:16px;height:16px"></i> @item.Menu_Name</span>
                     @{
-                        var childmenu = Model.Where(a => a.MenuParentID == item.MenuID).OrderBy(a => a.MenuOrder);
+                        var childmenu = Model.Where(a => a.Menu_ParentID == item.Menu_ID).OrderBy(a => a.Menu_Order);
                         if (childmenu != null && childmenu.Count() > 0)
                         {
                             <ul>
                                 @foreach (var childitem in childmenu)
                                 {
                                     <li>
-                                        <span data-div="@childitem.MenuName" data-menuid="@childitem.MenuID" data-url="@childitem.MenuUrl" ><i class="@childitem.MenuIcon" style="width:16px;height:16px"></i> @childitem.MenuName</span>
+                                        <span data-div="@childitem.Menu_Name" data-menuid="@childitem.Menu_ID" data-url="@childitem.Menu_Url" ><i class="@childitem.Menu_Icon" style="width:16px;height:16px"></i> @childitem.Menu_Name</span>
                                         @{
-                                            var threemenuitem = Model.Where(a => a.MenuParentID == childitem.MenuID).OrderBy(a => a.MenuOrder);
+                                            var threemenuitem = Model.Where(a => a.Menu_ParentID == childitem.Menu_ID).OrderBy(a => a.Menu_Order);
                                             if (threemenuitem != null && threemenuitem.Count() > 0)
                                             {
                                                 <ul>
                                                     @foreach (var threemenu in threemenuitem)
                                                     {
                                                         <li>
-                                                            <span data-div="con" data-menuid="@childitem.MenuID" data-url="@threemenu.MenuUrl"><i class="@threemenu.MenuIcon" style="width:16px;height:16px"></i> @threemenu.MenuName</span>
+                                                            <span data-div="con" data-menuid="@childitem.Menu_ID" data-url="@threemenu.Menu_Url"><i class="@threemenu.Menu_Icon" style="width:16px;height:16px"></i> @threemenu.Menu_Name</span>
                                                         </li>
                                                     }
                                                 </ul>

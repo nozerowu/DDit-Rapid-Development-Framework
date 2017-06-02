@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using SqlSugar;
 
 namespace NoZero.Mvc.Models
 {
+     [SugarMapping(TableName = "Base.Menu_Button")]
     public class Menu_Button
     {
         

@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\AccountController.cs" />
+    <Compile Include="Areas\SystemSchema\Controllers\ButtonController.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\HomeController.cs" />
     <Compile Include="Areas\SystemSchema\Controllers\UserController.cs" />
     <Compile Include="Areas\SystemSchema\SystemSchemaAreaRegistration.cs" />
@@ -244,6 +245,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="heardImg\20160423heel.jpg" />
     <Content Include="Images\404.png" />
     <Content Include="Images\500.png" />
     <Content Include="Images\call.png" />
@@ -530,6 +532,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\SystemSchema\Views\Button\" />
     <Folder Include="Areas\SystemSchema\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
