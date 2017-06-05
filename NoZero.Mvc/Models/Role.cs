@@ -5,7 +5,7 @@ using SqlSugar;
 
 namespace NoZero.Mvc.Models
 {
-     [SugarMapping(TableName = "Base.Role")]
+    
     public class Role
     {
         

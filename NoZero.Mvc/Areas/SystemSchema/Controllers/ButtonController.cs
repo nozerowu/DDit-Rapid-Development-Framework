@@ -23,7 +23,8 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult GetButtonList(Button model)
         {
-            var result = db.Queryable<Button>().ToList();
+            var btList = db.Queryable<Button>("Base.Button").ToList();
+            var result = new Tuple<int, List<Button>>(btList.Count, btList);
             return this.JsonResult(result);
         }
 
@@ -35,14 +36,14 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult GetButtonItem()
         {
-            var btnModel = db.Queryable<Button>().ToList();
+            var btnModel = db.Queryable<Button>("Base.Button").ToList();
             return Content(SerializeObject(btnModel));
         }
 
         [HttpPost]
         public ActionResult CurrentRoleBtnAuthority(int RoleID)
         {
-            var result = db.Queryable<Role_Button>().Where(it => it.Role_ID == RoleID).ToList();
+            var result = db.Queryable<Role_Button>("Base.Role_Button").Where(it => it.Role_ID == RoleID).ToList();
             return Json(result);
         }
 
@@ -72,7 +73,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult RemoveButton(int btnID)
         {
-            if (!db.Queryable<Menu_Button>().Any(it=>it.Button_ID==btnID))
+            if (!db.Queryable<Menu_Button>("Base.Menu_Button").Any(it => it.Button_ID == btnID))
             {
                 db.Delete<Button, int>(btnID);
                 return Json(new ResultEntity { result = true });
@@ -83,17 +84,17 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [ChildActionOnly]
         public ActionResult CreateButtonByMenu(int menuId, string mark)
         {
-            var rolelist = db.Queryable<User_Role>().Where(it => it.User_ID == UserInfo.User_ID).Select(it=>it.Role_ID).ToList();
+            var rolelist = db.Queryable<User_Role>("Base.User_Role").Where(it => it.User_ID == UserInfo.User_ID).Select(it => it.Role_ID).ToList();
             var buttonList = new List<Button>();
-            var mb = db.Queryable<Menu_Button>().Where(it => it.Menu_ID == menuId).OrderBy(it => it.OrderBy).ToList();
+            var mb = db.Queryable<Menu_Button>("Base.Menu_Button").Where(it => it.Menu_ID == menuId).OrderBy(it => it.OrderBy).ToList();
             foreach (var role in rolelist)
             {
                 mb.ForEach(m =>
                 {
-                    var hasmb = db.Queryable<Role_Button>().In(it => it.Role_ID, rolelist).Where(it=>it.Menu_ID==m.Menu_ID).Where(it=>it.Button_ID==m.Button_ID).ToList();
+                    var hasmb = db.Queryable<Role_Button>("Base.Role_Button").In(it => it.Role_ID, rolelist).Where(it => it.Menu_ID == m.Menu_ID).Where(it => it.Button_ID == m.Button_ID).ToList();
                     if (hasmb != null)
                     {
-                        var bt = db.Queryable<Button>().Single(it=>it.Button_ID==m.Button_ID);
+                        var bt = db.Queryable<Button>("Base.Button").Single(it => it.Button_ID == m.Button_ID);
                         if (!buttonList.Contains(bt))
                         {
                             buttonList.Add(bt);
@@ -107,7 +108,10 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
             mb.ForEach(m =>
             {
                 var btn = buttonList.FirstOrDefault(a => a.Button_ID == m.Button_ID);
-                if (btn != null) buttonList.Add(btn);
+                if (btn != null)
+                {
+                    buttonList.Add(btn);
+                }
             });
 
             return PartialView(buttonList);

@@ -74,26 +74,33 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrEditMenuInfo([ModelBinder(typeof(CustomModelBind))]Menu Menumodel)
+        public ActionResult AddOrEditMenuInfo(Menu Menumodel)
         {
-            var menuModel = this.MenuRepository.OrderAssignment(Menumodel);
-
-            if (Menumodel.MenuID == 0)
+            Menumodel.Create_Time = DateTime.Now;
+            if (Menumodel.Menu_ParentID != null)
             {
-                this.MenuRepository.AddMenu(menuModel);
+                int maxMenu =
+                    db.Queryable<Menu>()
+                        .Where(it => it.Menu_ParentID == Menumodel.Menu_ParentID)
+                        .Max(it => it.Menu_Order).ObjToInt();
+                Menumodel.Menu_Order = maxMenu + 1;
+            }
+
+            if (Menumodel.Menu_ID == 0)
+            {
+                db.Insert(Menumodel);
             }
             else
             {
-                this.MenuRepository.ModifyMenu(menuModel);
+                db.Update(Menumodel);
             }
-
             return Json(new ResultEntity() { result = true });
         }
 
         [HttpPost]
         public ActionResult RemoveMenu(int menuID)
         {
-            this.MenuRepository.DeleteMenu(menuID);
+            db.Delete<Menu>(it => it.Menu_ID == menuID);
             return Json(new ResultEntity() { result = true, message = "信息删除成功！" });
         }
     }

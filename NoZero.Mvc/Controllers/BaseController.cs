@@ -18,7 +18,7 @@ namespace NoZero.Mvc.Controllers
 
         public BaseController(DbService s)
         {
-            db = s._db;   
+            db = s._db;
         }
 
         public List<Menu> GetMenuByUserId(int userId)

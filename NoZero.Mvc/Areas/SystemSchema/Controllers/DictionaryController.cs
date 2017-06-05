@@ -21,7 +21,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         [HttpPost]
         public ActionResult GetDicValueList(Dictionary model)
         {
-            var result = db.Queryable<Models.Dictionary>().ToList();
+            var result = db.Queryable<Models.Dictionary>("Base.Dictionary").ToList();
             var temp= new Tuple<int, List<Dictionary>>(result.Count, result);
             return this.JsonResult(temp);
         }
@@ -34,7 +34,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult GetGetDicategoryList()
         {
-            var result = db.Queryable<DictionaryCategory>().ToList();
+            var result = db.Queryable<DictionaryCategory>("Base.DictionaryCategory").ToList();
             return Json(result.Select(m => new
             {
                 title = m.Category,
