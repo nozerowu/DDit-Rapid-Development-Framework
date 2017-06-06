@@ -51,12 +51,12 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetUserList(int pageSize,int pageIndex,User usermodel = null)
+        public ActionResult GetUserList(User usermodel = null)
         {
-            pageSize = pageSize == 0 ? 10 : pageSize;
-            var userList=db.Queryable<User>("Base.User").Skip(pageIndex).Take(pageSize).ToList();
+            //pageSize = pageSize == 0 ? 10 : pageSize;
+            var userList=db.Queryable<User>().OrderBy(it=>it.User_ID).Skip(0).Take(10).ToList();
             var listModel = new Tuple<int, List<User>>(userList.Count, userList);
-            return this.JsonResult(listModel);
+            return base.JsonResult(listModel);
         }
 
         private ActionResult JsonResult(object p)

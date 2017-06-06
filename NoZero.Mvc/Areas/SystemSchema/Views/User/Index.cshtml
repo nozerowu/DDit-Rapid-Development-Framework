@@ -24,18 +24,18 @@
             ajax: {
                 url: "/User/GetUserList",
                 data: function (d) {
-                    d.UserName = $("#UserName").val();
-                    d.UserReallyname = $("#UserReallyname").val();
-                    d.DepartmentID = $("#DepartmentID").val();
+                    d.User_Name = $("#UserName").val();
+                    d.User_Reallyname = $("#UserReallyname").val();
+                    d.Department_ID = $("#DepartmentID").val();
                     return JSON.stringify(d);
                 }
             },
             columns: [
-                { data: 'UserID', visible: false },
-                { data: 'UserName',title:"用户名" },
-                { data: 'UserReallyname',title:"昵称" },
+                { data: 'User_ID', visible: false },
+                { data: 'User_Name',title:"用户名" },
+                { data: 'User_Reallyname',title:"昵称" },
                 {
-                    data: 'DepartmentID', title: "部门", render: function (data, type, row, meta) {
+                    data: 'Department_ID', title: "部门", render: function (data, type, row, meta) {
                         var result="";
                         var cc = $("#json").val();
                         var bmobj = eval(cc);
@@ -54,7 +54,7 @@
                     }
                 },
                 {
-                    data: 'CreateTime', title: "创建时间"
+                    data: 'Create_Time', title: "创建时间"
                 }
             ]
         });
