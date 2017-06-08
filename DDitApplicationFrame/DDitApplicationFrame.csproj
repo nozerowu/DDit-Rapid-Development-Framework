@@ -539,7 +539,7 @@
     <Content Include="Areas\SystemSchema\Views\Home\Main.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Button\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Log\Index.cshtml" />
-    <Content Include="Areas\SystemSchema\Views\Button\CreateButtonByMuen.cshtml" />
+    <Content Include="Areas\SystemSchema\Views\Button\CreateButtonByMenu.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Dictionary\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Test\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />

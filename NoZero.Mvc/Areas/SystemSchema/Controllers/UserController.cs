@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using NoZero.Mvc.Controllers;
 using NoZero.Mvc.Models;
+using NoZero.Mvc.ViewModels;
 using SqlSugar;
 
 namespace NoZero.Mvc.Areas.SystemSchema.Controllers
@@ -51,12 +52,37 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetUserList(User usermodel = null)
-        {
-            //pageSize = pageSize == 0 ? 10 : pageSize;
-            var userList=db.Queryable<User>().OrderBy(it=>it.User_ID).Skip(0).Take(10).ToList();
-            var listModel = new Tuple<int, List<User>>(userList.Count, userList);
-            return base.JsonResult(listModel);
+        public ActionResult GetUserList(UserInput usermodel)
+        {    
+            var temp = db.Queryable<User>();
+            if (!string.IsNullOrEmpty(usermodel.User_Name))
+            {
+                temp = temp.Where(it => it.User_Name == usermodel.User_Name);
+            }
+            if (!string.IsNullOrEmpty(usermodel.User_Reallyname))
+            {
+                temp = temp.Where(it => it.User_Reallyname==usermodel.User_Reallyname);
+            }
+            if (usermodel.Department_ID!=0)
+            {
+                temp = temp.Where(it => it.Department_ID==usermodel.Department_ID);
+            }
+            int count = temp.ToList().Count();
+
+            string[] arr =
+            {
+                "User_ID ", "User_Name ", "User_Reallyname ", "Department_ID ", "IsEnable ",
+                "Create_Time "
+            };
+            string orderString = arr[Convert.ToInt16(usermodel.order[0].column)] + usermodel.order[0].dir;
+            var userList =temp
+                    .OrderBy(orderString)
+                    .Skip(usermodel.start)
+                    .Take(usermodel.length)
+                    .ToList();
+            int code = Convert.ToInt16(usermodel.draw);
+
+            return JsonResultForDataTable(userList, count, code);
         }
 
         private ActionResult JsonResult(object p)

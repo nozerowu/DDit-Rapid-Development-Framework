@@ -9,6 +9,7 @@ namespace NoZero.Mvc.Models
 
     public class ResultEntity
     {
+        public int draw { get; set; }
         public bool result { get; set; }
 
         public string message { get; set; }

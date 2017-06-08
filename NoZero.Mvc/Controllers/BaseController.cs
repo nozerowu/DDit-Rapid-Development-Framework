@@ -23,10 +23,9 @@ namespace NoZero.Mvc.Controllers
 
         public List<Menu> GetMenuByUserId(int userId)
         {
-            var tempUser = db.Queryable<User>("Base.User").FirstOrDefault(it => it.User_ID == userId);
-            var rolelist = db.Queryable<User_Role>("Base.User_Role").Where(it => it.Role_ID == tempUser.User_ID).Select(it => it.Role_ID).ToList();
-            var menuIdList = db.Queryable<Role_Menu>("Base.Role_Menu").In(it => it.Role_ID, rolelist).Select("distinct Menu_ID").Select(it=>it.Menu_ID).ToList();
-            var newMenu = db.Queryable<Menu>("Base.Menu").In(it => it.Menu_ID, menuIdList).ToList();
+            var rolelist = db.Queryable<User_Role>().Where(it => it.User_ID==userId).Select(it => it.Role_ID).ToList();
+            var menuIdList = db.Queryable<Role_Menu>().In(it => it.Role_ID, rolelist).Select(it=>it.Menu_ID).Select("distinct Menu_ID").ToList();
+            var newMenu = db.Queryable<Menu>().In(it => it.Menu_ID, menuIdList).ToList();
             return newMenu;
         }
 
@@ -53,7 +52,7 @@ namespace NoZero.Mvc.Controllers
             var falg = true;
             try
             {
-                var user = db.Queryable<User>("Base.User").SingleOrDefault(it => it.User_Name == model.User_Name);
+                var user = db.Queryable<User>().SingleOrDefault(it => it.User_Name == model.User_Name);
                 if (user == null)
                 {
                     message = "指定账号的用户不存在。";
@@ -133,6 +132,12 @@ namespace NoZero.Mvc.Controllers
 
             var jsonresult = SerializeObject(new ResultEntity { recordsFiltered = data.Item1, recordsTotal = data.Item1, dataList = data.Item2 });
 
+            return Content(jsonresult);
+        }
+
+        public ContentResult JsonResultForDataTable<T>(List<T> data,int a,int draw) where T : class
+        {
+            var jsonresult = SerializeObject(new ResultEntity { recordsFiltered = a, recordsTotal = a, dataList = data ,draw=draw});
             return Content(jsonresult);
         }
 
