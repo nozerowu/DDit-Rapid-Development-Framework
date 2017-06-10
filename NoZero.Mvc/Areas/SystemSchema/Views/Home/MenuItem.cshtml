@@ -3,7 +3,7 @@
 @model IEnumerable<Menu>
 
 @{
-    var menuitem=Model.Where(a=>a.Menu_ParentID==0).OrderBy(a=>a.Menu_Order);
+    var menuitem=Model.Where(a=>a.Menu_ParentID==null).OrderBy(a=>a.Menu_Order);
     if (menuitem!=null&&menuitem.Count()>0)
     { 
         foreach (var item in menuitem)

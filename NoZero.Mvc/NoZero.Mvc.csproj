@@ -389,7 +389,6 @@
     <Content Include="Areas\SystemSchema\Views\Menu\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Role\Index.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Test\Index.cshtml" />
-    <Content Include="Areas\SystemSchema\Views\Home\MenuItem - 复制.cshtml" />
     <Content Include="Areas\SystemSchema\Views\Home\MenuItem.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-theme.css" />

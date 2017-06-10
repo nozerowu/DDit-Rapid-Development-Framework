@@ -13,7 +13,7 @@ namespace NoZero.Mvc.Models
 
         public string MenuUrl { get; set; }
 
-        public int MenuParentID { get; set; }
+        public int? MenuParentID { get; set; }
 
         public string MenuParentName { get; set; }
 
