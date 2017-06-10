@@ -33,13 +33,13 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         public ActionResult Logout()
         {
 
-            var logurl = FormsAuthentication.LoginUrl;
+            //var logurl = FormsAuthentication.LoginUrl;
             if (User.Identity.IsAuthenticated)
             {
                 Logon();
                // CacheHelp.RemoveKeyCache(User.Identity.Name);
             }
-            return Redirect(logurl);
+            return Redirect(Url.Action("Login","Account"));
         }
     }
 }

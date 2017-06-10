@@ -16,7 +16,7 @@ namespace DDit.Core.Data.Repository
     public class CoreDbContext : DbContext
     {
         public CoreDbContext()
-            : base("default")
+            : base("SqlServerDbContext")
         {
               //取消EF的延迟加载
               this.Configuration.ProxyCreationEnabled = false;
@@ -39,7 +39,6 @@ namespace DDit.Core.Data.Repository
                  dynamic configurationInstance = Activator.CreateInstance(type);
                  modelBuilder.Configurations.Add(configurationInstance);
              }
-
         }
     }
 }

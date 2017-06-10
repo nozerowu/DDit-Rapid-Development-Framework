@@ -4,6 +4,7 @@
 
 @using NoZero.Mvc.Controllers
 @using NoZero.Mvc.Models;
+@using NoZero.Mvc.ViewModels;
 @*@using DDitApplicationFrame.Common;*@
 
 @Styles.Render("~/Scripts/bootstrap/css/1", "~/Scripts/datatables/css/1", "~/Content/1", "~/Scripts/alertjs/themes/1", "~/Scripts/select2/css/1", "~/Scripts/iconpicker/css/1", "~/Scripts/fancyTree/skin-win7/1", "~/Scripts/fileUpload/1")
@@ -17,15 +18,15 @@
             ajax: {
                 url: "/Role/GetRoleList",
                 data: function (d) {
-                    d.RoleName = $("#RoleName").val();
+                    d.Role_Name = $("#RoleName").val();
                     return JSON.stringify(d);
                 }
             },
             columns: [
-                { data: 'RoleID', visible: false },
-                { data: 'RoleName', title: "角色名称" },
-                { data: 'RoleDescription', title: "角色描述" },
-                { data: 'CreateTime', title: "创建时间", width: 100 }
+                { data: 'Role_ID', visible: false },
+                { data: 'Role_Name', title: "角色名称" },
+                { data: 'Role_Description', title: "角色描述" },
+                { data: 'Create_Time', title: "创建时间", width: 100 }
             ]
         });
 
@@ -145,42 +146,7 @@
                                            btnstr += v.ButtonID + ","
                                      })
                                      $(data.node.li).attr("data-btnstr", btnstr);
-                                 }
-
-                                 //if (obj.selected) { //是否选择
-                                 //    if (data.node.folder) {  //是否为父节点
-                                 //        if (obj.children != null && obj.children.length > 0) { //节点数大于O
-                                 //            $.each(obj.children, function (i, v) {
-                                 //                v.setSelected();
-                                 //                if (v.data.btn.length > 0) {
-                                 //                    var btnstr = "";
-                                 //                    $.each(v.data.btn, function (is, vs) {
-                                 //                        btnstr += vs.ButtonID + ","
-                                 //                    })
-                                 //                    $(v.li).attr("data-btnstr", btnstr);
-                                 //                }
-                                 //            });
-                                 //        }
-                                 //    } else {
-                                 //        var btnstr = "";
-                                 //        $.each(obj.data.btn, function (is, vs) {
-                                 //            btnstr += vs.ButtonID + ","
-                                 //        })
-                                 //        $(obj.li).attr("data-btnstr", btnstr);
-        
-                                 //    }
-                                 //} else {
-                                 //    if (data.node.folder) {
-                                 //        if (obj.children != null && obj.children.length > 0) { //节点数大于O
-                                 //            $.each(obj.children, function (i, v) {
-                                 //                $(v.li).removeAttr("data-btnstr");
-                                 //                v.setSelected(false);
-                                 //            })
-                                 //        }
-                                 //    } else {
-                                 //        $(obj.li).removeAttr("data-btnstr");
-                                 //    }
-                                 //}
+                                 }  
                              }
                          });
 
@@ -413,7 +379,7 @@
             <div class="col-md-4 fh100 boright over-auto">
                 <div id="menuTree">
                     <ul>
-                        @foreach (var item in ViewBag.MenuList as List<Menu>)
+                        @foreach (var item in ViewBag.MenuList as List<MenuTree>)
                         {
                             <li data-id="@item.Menu_ID" class="folder expanded children">
                                 @item.Menu_Name
@@ -423,18 +389,19 @@
                                 <ul>
                                     @foreach (var itemchild in item.Childs)
                                     {
-                                        <li data-id="@itemchild.Menu_ID" data-btn="@(BaseController.SerializeObject(itemchild.mbList))">
+                                        @*<li data-id="@itemchild.Menu_ID" data-btn="@(BaseController.SerializeObject(itemchild.mbList))">*@
+                                        <li data-id="@itemchild.Menu_ID" data-btn="">
                                             @itemchild.Menu_Name
                                             @{
-                                        if (itemchild.Childs != null && itemchild.Childs.Count > 0)
-                                        {
-                                            <ul>
-                                                @foreach (var itemchilds in itemchild.Childs)
+                                                if (itemchild.Childs != null && itemchild.Childs.Count > 0)
                                                 {
-                                                    <li data-id="@itemchilds.Menu_ID">@itemchilds.Menu_Name</li>
+                                                    <ul>
+                                                        @foreach (var itemchilds in itemchild.Childs)
+                                                        {
+                                                            <li data-id="@itemchilds.Menu_ID">@itemchilds.Menu_Name</li>
+                                                        }
+                                                    </ul>
                                                 }
-                                            </ul>
-                                        }
                                             }
                                         </li>
                                     }

@@ -13,6 +13,8 @@ namespace NoZero.Mvc.Models
 
         public string MenuUrl { get; set; }
 
+        public int MenuParentID { get; set; }
+
         public string MenuParentName { get; set; }
 
         public int MenuOrder { get; set; }
@@ -22,6 +24,8 @@ namespace NoZero.Mvc.Models
         public DateTime CreateTime { get; set; }
 
         public ICollection<MenuMappingButton> mbList { get; set; }
+
+        public List<MenuDo> Childs { get; set; }
 
     }
 }

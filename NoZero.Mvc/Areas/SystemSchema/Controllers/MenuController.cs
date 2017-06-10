@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using NoZero.Mvc.Controllers;
 using NoZero.Mvc.Models;
+using NoZero.Mvc.ViewModels;
 using SqlSugar;
 
 namespace NoZero.Mvc.Areas.SystemSchema.Controllers
@@ -22,7 +23,25 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult ParentMenu()
         {
-            var pm = db.Queryable<Menu>().Where(it => it.Menu_ParentID == null).ToList();
+            var pm = db.Queryable<Menu>().Where(it=>it.Menu_ParentID == null).Select(it => new MenuDo
+            {
+                MenuID=it.Menu_ID,
+                MenuIcon=it.Menu_Icon,
+                MenuParentID=it.Menu_ParentID,
+                MenuName=it.Menu_Name
+            }).ToList();
+            foreach (var item in pm)
+            {
+                var item1 = item;
+                var temp = db.Queryable<Menu>().Where(it => it.Menu_ParentID == item1.MenuID).Select(it => new MenuDo
+                {
+                    MenuID = it.Menu_ID,
+                    MenuIcon = it.Menu_Icon,
+                    MenuParentID = it.Menu_ParentID,
+                    MenuName = it.Menu_Name
+                }).ToList();
+                item.Childs = temp;
+            }
             var pmjson = SerializeObject(pm);
             return Content(pmjson);
         }

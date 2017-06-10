@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using NoZero.Mvc.Controllers;
 using NoZero.Mvc.Models;
 using SqlSugar;
+using NoZero.Mvc.ViewModels;
 
 namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 {
@@ -15,16 +16,42 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         // GET: SystemSchema/Role
         public ActionResult Index()
         {
-            //var pm = MenuRepository.GetParentMenu();
-            var pm = db.Queryable<Menu>().Where(it => it.Menu_ParentID == null).ToList();
-            ViewBag.MenuList = pm;
+            List<MenuTree> menuTreeList = new List<MenuTree> {};
+            var menuTree = db.Queryable<Menu>().Where(it => it.Menu_ParentID == null).ToList();
+            foreach (var item in menuTree)
+            {
+                var tree = new MenuTree
+                {
+                    Menu_ID = item.Menu_ID,
+                    Menu_Name = item.Menu_Name
+                };
+                var item1 = item;
+                tree.Childs =
+                    db.Queryable<Menu>().Where(it => it.Menu_ParentID == item1.Menu_ID).Select(it => new MenuTree
+                    {
+                        Menu_ID = it.Menu_ID,
+                        Menu_Name = it.Menu_Name
+                    }).ToList();
+                menuTreeList.Add(tree);
+  
+            }
+            ViewBag.MenuList = menuTreeList;
             return View();
         }
 
         [HttpPost]
         public ActionResult GetRoleList(Role rolemodel)
         {
-            var listmodel = db.Queryable<Role>().Where(it => it.Role_Name == rolemodel.Role_Name).ToList();
+            
+            List<Role> listmodel ;
+            if (string.IsNullOrEmpty(rolemodel.Role_Name))
+            {
+                listmodel = db.Queryable<Role>().ToList();
+            }
+            else
+            {
+                listmodel = db.Queryable<Role>().Where(it => it.Role_Name == rolemodel.Role_Name).ToList();
+            }
             var result = new Tuple<int, List<Role>>(listmodel.Count, listmodel);
             return JsonResult<Role>(result);
         }

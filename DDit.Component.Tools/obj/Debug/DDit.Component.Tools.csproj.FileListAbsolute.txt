@@ -23,6 +23,8 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\D
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\obj\Debug\DDit.Component.Tools.csprojResolveAssemblyReference.cache
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\obj\Debug\DDit.Component.Tools.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\obj\Debug\DDit.Component.Tools.pdb
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\Debug\Autofac.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\Debug\Autofac.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\Debug\System.Web.Mvc.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\Debug\System.Web.Razor.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Tools\bin\Debug\System.Web.WebPages.Razor.dll

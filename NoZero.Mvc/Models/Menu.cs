@@ -35,7 +35,7 @@ namespace NoZero.Mvc.Models
         /// Default:- 
         /// Nullable:True 
         /// </summary>
-        public int? Menu_ParentID {get;set;}
+        public int Menu_ParentID {get;set;}
 
         /// <summary>
         /// Desc:- 

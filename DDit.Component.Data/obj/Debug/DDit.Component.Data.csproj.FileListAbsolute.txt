@@ -1,4 +1,3 @@
-D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.dll.config
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\DDit.Component.Data.pdb
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Component.Data\bin\Debug\Autofac.dll

@@ -11,7 +11,6 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\E
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\EntityFramework.SqlServer.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\log4net.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\Microsoft.Web.Infrastructure.dll
-D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\MiniProfiler.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\MiniProfiler.EntityFramework6.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\MiniProfiler.Mvc.dll
@@ -80,3 +79,10 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\z
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\obj\Debug\DDitApplicationFrame.csprojResolveAssemblyReference.cache
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\obj\Debug\DDitApplicationFrame.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\obj\Debug\DDitApplicationFrame.pdb
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\MySql.Data.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\MySql.Data.Entity.EF6.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\Oracle.ManagedDataAccess.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\System.Web.Helpers.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\System.Web.Helpers.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDitApplicationFrame\bin\zh-Hans\System.Web.Helpers.resources.dll

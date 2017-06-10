@@ -34,10 +34,15 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\S
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.Razor.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.WebPages.Razor.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.WebPages.xml
-D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\Microsoft.Web.Infrastructure.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.Razor.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.WebPages.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.Helpers.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\Autofac.dll
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\Newtonsoft.Json.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\System.Web.Helpers.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\Autofac.xml
+D:\coding\Git\github\DDit-Rapid-Development-Framework\DDit.Core.Data\bin\Debug\zh-Hans\System.Web.Helpers.resources.dll

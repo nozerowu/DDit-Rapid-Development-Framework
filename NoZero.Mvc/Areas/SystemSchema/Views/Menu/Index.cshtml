@@ -159,6 +159,10 @@
                         //图标插件初始化
                         $("[name='MenuIcon']").iconPicker({ type: true });
 
+                        var cc = document.getElementById("MenuIndex").contentWindow.menuPid
+
+                        console.log(cc);
+
                     });
                 }
             });
@@ -253,6 +257,7 @@
             var cc = menutable.rows('.selected')
             if (cc[0].length > 0) {
                 var model = cc.data();
+                menuPid = model[0].MenuParentID;
                 openMenuLayer();
                 parent.layer.title("编辑菜单", mainLayer);
                 parent.$("#menuForm").setForm(model[0]);
@@ -402,8 +407,8 @@
             @foreach (var item in ViewBag.Button as List<Button>)
             {
                 <div class="col-xs-3" style="margin-bottom:10px">
-                    <button type="button" class="btn btn-default" data-tag="@item.ButtonID">
-                        <span class="@item.ButtonMagic" aria-hidden="true"></span> @item.ButtonName
+                    <button type="button" class="btn btn-default" data-tag="@item.Button_ID">
+                        <span class="@item.Button_Magic" aria-hidden="true"></span> @item.Button_Name
                     </button>
                 </div>
             }

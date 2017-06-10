@@ -40,7 +40,7 @@ namespace NoZero.Mvc.Models
             new KeyValue(){ Key="Role_Button", Value="Base.Role_Button"},
             new KeyValue(){ Key="Role_Menu", Value="Base.Role_Menu"},
             new KeyValue(){ Key="test", Value="Test.test"},
-            new KeyValue(){ Key="User", Value="Base.User"},
+            new KeyValue(){ Key="User", Value="Base.UserInfomation"},
             new KeyValue(){ Key="SystemInfo", Value="Base.SystemInfo"},
             new KeyValue(){ Key="User_Role", Value="Base.User_Role"}
             };

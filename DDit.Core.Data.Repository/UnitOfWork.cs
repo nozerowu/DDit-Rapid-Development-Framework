@@ -1,4 +1,5 @@
 ﻿using DDit.Component.Data;
+using DDit.Component.Tools;
 using DDit.Core.Data.Entity;
 using DDit.Core.Data.SystemEntity.Entity;
 using System;
@@ -10,13 +11,13 @@ using System.Web;
 
 namespace DDit.Core.Data.Repository
 {
-    public class UnitOfWork:IDisposable
+    public class UnitOfWork : IDisposable, IDependency
     {
         public DbContext context;
 
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(DbContext _context)
         {
-             context = dbContext;
+            context = _context;
         }
 
         public GenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class

@@ -41,9 +41,9 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult CurrentRoleBtnAuthority(int RoleID)
+        public ActionResult CurrentRoleBtnAuthority(int roleId)
         {
-            var result = db.Queryable<Role_Button>("Base.Role_Button").Where(it => it.Role_ID == RoleID).ToList();
+            var result = db.Queryable<Role_Button>("Base.Role_Button").Where(it => it.Role_ID == roleId).ToList();
             return Json(result);
         }
 
@@ -73,7 +73,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         public ActionResult RemoveButton(int btnID)
         {
-            if (!db.Queryable<Menu_Button>("Base.Menu_Button").Any(it => it.Button_ID == btnID))
+            if (!db.Queryable<Menu_Button>().Any(it => it.Button_ID == btnID))
             {
                 db.Delete<Button, int>(btnID);
                 return Json(new ResultEntity { result = true });
@@ -83,38 +83,45 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
 
         [ChildActionOnly]
         public ActionResult CreateButtonByMenu(int menuId, string mark)
-        {
-            var rolelist = db.Queryable<User_Role>("Base.User_Role").Where(it => it.User_ID == UserInfo.User_ID).Select(it => it.Role_ID).ToList();
-            var buttonList = new List<Button>();
-            var mb = db.Queryable<Menu_Button>("Base.Menu_Button").Where(it => it.Menu_ID == menuId).OrderBy(it => it.OrderBy).ToList();
-            foreach (var role in rolelist)
-            {
-                mb.ForEach(m =>
-                {
-                    var hasmb = db.Queryable<Role_Button>("Base.Role_Button").In(it => it.Role_ID, rolelist).Where(it => it.Menu_ID == m.Menu_ID).Where(it => it.Button_ID == m.Button_ID).ToList();
-                    if (hasmb != null)
-                    {
-                        var bt = db.Queryable<Button>("Base.Button").Single(it => it.Button_ID == m.Button_ID);
-                        if (!buttonList.Contains(bt))
-                        {
-                            buttonList.Add(bt);
-                        }
-                    }
-                });
-            }
+        { 
+            //var rolelist = db.Queryable<User_Role>().Where(it => it.User_ID == UserInfo.User_ID).Select(it => it.Role_ID).ToList();
+            //var buttonList = new List<Button>();
+            var mb =
+                db.Queryable<Menu_Button>()
+                    .Where(it => it.Menu_ID == menuId)
+                    .OrderBy(it => it.OrderBy)
+                    .Select(it => it.Button_ID)
+                    .Select("distinct Button_ID")
+                    .ToList();
+            var btList = db.Queryable<Button>().In(it => it.Button_ID, mb).OrderBy(it=>it.Button_ID).ToList();
+            //foreach (var role in rolelist)
+            //{
+            //    mb.ForEach(m =>
+            //    {
+            //        var hasmb = db.Queryable<Role_Button>().In(it => it.Role_ID, rolelist).Where(it => it.Menu_ID == m.Menu_ID).Where(it => it.Button_ID == m.Button_ID).ToList();
+            //        if (hasmb != null)
+            //        {
+            //            var bt = db.Queryable<Button>().Single(it => it.Button_ID == m.Button_ID);
+            //            if (!buttonList.Contains(bt))
+            //            {
+            //                buttonList.Add(bt);
+            //            }
+            //        }
+            //    });
+            //}
 
             ViewBag.mark = mark;
-            buttonList = new List<Button>();
-            mb.ForEach(m =>
-            {
-                var btn = buttonList.FirstOrDefault(a => a.Button_ID == m.Button_ID);
-                if (btn != null)
-                {
-                    buttonList.Add(btn);
-                }
-            });
+            //buttonList = new List<Button>();
+            //mb.ForEach(m =>
+            //{
+            //    var btn = buttonList.FirstOrDefault(a => a.Button_ID == m.Button_ID);
+            //    if (btn != null)
+            //    {
+            //        buttonList.Add(btn);
+            //    }
+            //});
 
-            return PartialView(buttonList);
+            return PartialView(btList);
         }
     }
 }

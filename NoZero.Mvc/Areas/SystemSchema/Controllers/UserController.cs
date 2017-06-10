@@ -19,7 +19,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         {
             var roleList = db.Queryable<Role>().ToList();
             var bumen = db.Queryable<DictionaryCategory>().Where(it => it.Category == "部门").FirstOrDefault();
-            var bumenlist = db.Queryable<Dictionary>().Where(it => it.DicCategoryID == bumen.ID).ToList();
+            var bumenlist = db.Queryable<Dictionary>().Where(it => it.DicCategoryID == bumen.ID).Where(it=>it.Enabled).ToList();
             ViewBag.bumen = bumenlist;
             ViewBag.jsonbumen = SerializeObject(bumenlist);
             ViewBag.role = roleList;

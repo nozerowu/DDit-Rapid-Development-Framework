@@ -4,10 +4,12 @@ using DDit.Core.Data.IRepositories;
 using DDit.Core.Data.SystemEntity.Entity;
 using System;
 using System.Collections.Generic;
+using Autofac;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DDit.Component.Tools;
 
 namespace DDit.Core.Data.Repository.Repositories
 {
@@ -16,7 +18,7 @@ namespace DDit.Core.Data.Repository.Repositories
 
         public void MenuMapBtn(int MenuID,List<MenuMappingButton> mplist)
         {
-            using (UnitOfWork dal = new UnitOfWork(new CoreDbContext()))
+            using (UnitOfWork dal = BaseInfo._container.Resolve<UnitOfWork>())
             {
                var menuRepository=dal.GetRepository<Menu>();
                var menuBtnRepository = dal.GetRepository<MenuMappingButton>();
@@ -32,7 +34,7 @@ namespace DDit.Core.Data.Repository.Repositories
 
         public List<MenuMappingButton> GetMBList(MenuMappingButton model)
         {
-            using (UnitOfWork dal = new UnitOfWork(new CoreDbContext()))
+            using (UnitOfWork dal = BaseInfo._container.Resolve<UnitOfWork>())
             {
                 var listMb = dal.GetRepository<MenuMappingButton>().Get(filter: a => a.ButtonID == model.ButtonID).ToList();
                 return listMb;
