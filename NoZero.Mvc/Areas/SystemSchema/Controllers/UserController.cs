@@ -26,12 +26,12 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
             return View();
         }
 
-        public ActionResult ValidUserName(User model)
+        public ActionResult ValidUserName(UserInput model)
         {
-            var userModel = db.Queryable<User>("Base.User").FirstOrDefault(it => it.User_Name == model.User_Name);          
+            var userModel = db.Queryable<User>().FirstOrDefault(it => it.User_Name == model.UserName);          
             if (userModel != null)
             {
-                return Content(model.User_ID> 0 && model.User_ID== userModel.User_ID ? "true" : "false");
+                return Content(model.UserID> 0 && model.UserID== userModel.User_ID ? "true" : "false");
             }
             else
             {
@@ -52,7 +52,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetUserList(UserInput usermodel)
+        public ActionResult GetUserList(UserDtInput usermodel)
         {    
             var temp = db.Queryable<User>();
             if (!string.IsNullOrEmpty(usermodel.User_Name))
@@ -74,12 +74,24 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                 "User_ID ", "User_Name ", "User_Reallyname ", "Department_ID ", "IsEnable ",
                 "Create_Time "
             };
+            // 凑成" User_ID desc"这样
             string orderString = arr[Convert.ToInt16(usermodel.order[0].column)] + usermodel.order[0].dir;
             var userList =temp
                     .OrderBy(orderString)
                     .Skip(usermodel.start)
                     .Take(usermodel.length)
-                    .ToList();
+                    .Select(it=>new UserInput
+                    {
+                        UserID=it.User_ID,
+                        UserName=it.User_Name,
+                        UserPassword=it.User_Password,
+                        UserReallyname=it.User_Reallyname,
+                        HeadPortrait=it.HeadPortrait,
+                        DepartmentID=it.Department_ID,
+                        IsEnable=it.IsEnable,
+                        UpdateTime=it.Update_Time,
+                        Remark=it.Remark
+                    }).ToList();
             int code = Convert.ToInt16(usermodel.draw);
 
             return JsonResultForDataTable(userList, count, code);
@@ -91,7 +103,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddorEditUserInfo(User userModel, HttpPostedFileBase portrait)
+        public ActionResult AddorEditUserInfo(UserInput userModel, HttpPostedFileBase portrait)
         {
             string fileName = string.Empty;
             if (portrait != null && portrait.ContentLength > 0)
@@ -102,28 +114,35 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                 var filePath = Path.Combine(sysPath, fileName);
                 portrait.SaveAs(filePath);
             }
-            if (userModel.User_ID == 0)
+            User user=new User
             {
-                userModel.IsEnable = true;
-                userModel.Create_Time= DateTime.Now;
-                userModel.HeadPortrait = fileName;
+                
+            };
+            if (userModel.UserID == 0)
+            {
+                user.IsEnable = true;
+                user.Create_Time= DateTime.Now;
+                user.HeadPortrait = fileName;
+                user.User_ID = userModel.UserID;
+                user.User_Reallyname = userModel.UserReallyname;
+                user.User_Password = userModel.UserPassword;
+                user.Department_ID = userModel.DepartmentID;
+                user.Remark = userModel.Remark;
                 db.Insert(userModel);
             }
             else
             {
-                var headPortrait = db.Queryable<User>("Base.User").Single(it=>it.User_ID==UserInfo.User_ID).HeadPortrait;
-                userModel.HeadPortrait = fileName == "" ? headPortrait : fileName;
-                userModel.Update_Time = DateTime.Now;
+                var headPortrait = db.Queryable<User>().Single(it=>it.User_ID==userModel.UserID).HeadPortrait;
                 //注意检测是否有问题 2017-06-01
-                db.Update(userModel);
+                db.Update<User>(new { User_Reallyname = userModel.UserReallyname, HeadPortrait = fileName == "" ? headPortrait : fileName, Department_ID = userModel.DepartmentID, Remark = userModel.Remark,Update_Time = DateTime.Now }, it => it.User_ID == userModel.UserID);
             }
             return Json(new ResultEntity { result = true });
         }
 
         [HttpPost]
-        public ActionResult DisenableUser(User model)
+        public ActionResult DisenableUser(UserInput model)
         {
-            db.Delete<User>(it => it.User_ID == model.User_ID);
+            db.Delete<User>(it => it.User_ID == model.UserID);
             return Json(new ResultEntity { result = true });
         }
 

@@ -171,7 +171,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\JqDataTable.cs" />
     <Compile Include="ViewModels\MenuTree.cs" />
-    <Compile Include="ViewModels\UserDataTable.cs" />
+    <Compile Include="ViewModels\UserDtInput.cs" />
+    <Compile Include="ViewModels\UserInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AssistStyle.css" />

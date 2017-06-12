@@ -39,3 +39,4 @@ D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\zh-Hans\Sys
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.dll
 D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.pdb
+D:\coding\Git\github\DDit-Rapid-Development-Framework\NoZero.Mvc\obj\Debug\NoZero.Mvc.csprojResolveAssemblyReference.cache

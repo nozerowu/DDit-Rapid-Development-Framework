@@ -18,11 +18,6 @@ namespace NoZero.Mvc.ViewModels
  
         public List<Datacolumn> columns { get; set; }
 
-        //public string GetOrderByColumnName()
-        //{
-        //    int a = Convert.ToInt16(order[0].column);
-        //    return columns[a].name;
-        //}
     }
 
 
