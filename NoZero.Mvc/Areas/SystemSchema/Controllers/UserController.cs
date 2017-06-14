@@ -75,7 +75,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                 "Create_Time "
             };
             // 凑成" User_ID desc"这样
-            string orderString = arr[Convert.ToInt16(usermodel.order[0].column)] + usermodel.order[0].dir;
+            string orderString = arr[Convert.ToInt16(usermodel.order[0].column)-1] + usermodel.order[0].dir;
             var userList =temp
                     .OrderBy(orderString)
                     .Skip(usermodel.start)
@@ -90,6 +90,7 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                         DepartmentID=it.Department_ID,
                         IsEnable=it.IsEnable,
                         UpdateTime=it.Update_Time,
+                        CreateTime=it.Create_Time,
                         Remark=it.Remark
                     }).ToList();
             int code = Convert.ToInt16(usermodel.draw);
@@ -123,17 +124,17 @@ namespace NoZero.Mvc.Areas.SystemSchema.Controllers
                 user.IsEnable = true;
                 user.Create_Time= DateTime.Now;
                 user.HeadPortrait = fileName;
-                user.User_ID = userModel.UserID;
                 user.User_Reallyname = userModel.UserReallyname;
                 user.User_Password = userModel.UserPassword;
                 user.Department_ID = userModel.DepartmentID;
                 user.Remark = userModel.Remark;
-                db.Insert(userModel);
+                user.User_Name = userModel.UserName;
+                db.AddDisableInsertColumns("User_Id");
+                db.Insert(user);
             }
             else
             {
                 var headPortrait = db.Queryable<User>().Single(it=>it.User_ID==userModel.UserID).HeadPortrait;
-                //注意检测是否有问题 2017-06-01
                 db.Update<User>(new { User_Reallyname = userModel.UserReallyname, HeadPortrait = fileName == "" ? headPortrait : fileName, Department_ID = userModel.DepartmentID, Remark = userModel.Remark,Update_Time = DateTime.Now }, it => it.User_ID == userModel.UserID);
             }
             return Json(new ResultEntity { result = true });
